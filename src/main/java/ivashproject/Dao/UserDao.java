@@ -31,12 +31,9 @@ public class UserDao {
 
     @Transactional
     public void updateUser(long id,User updateUser){
-        Query query=manager.createQuery("update User set name= :name, lastName=:lastname,age=:age where id=:id");
-        query.setParameter("name",updateUser.getName());
-        query.setParameter("lastname",updateUser.getLastName());
-        query.setParameter("age",updateUser.getAge());
-        query.setParameter("id",updateUser.getId());
-        query.executeUpdate();
+        updateUser.setId(id);
+        manager.merge(updateUser);
+    
     }
 
     @Transactional(readOnly = true)
@@ -45,9 +42,7 @@ public class UserDao {
     }
 @Transactional(readOnly = true)
     public User show(long id) {
-        Query query=manager.createQuery("select u from User u  where id= :id");
-        query.setParameter("id",id);
-        return (User) query.getSingleResult();
+        return manager.find(User.class,id) ;
     }
 
 }
