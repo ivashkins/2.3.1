@@ -1,20 +1,14 @@
-package ivashproject.Dao;
+package ivashproject.dao;
 
-import ivashproject.Model.User;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
+import ivashproject.model.User;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
-import javax.persistence.TypedQuery;
 import java.util.List;
 @Component
-public class UserDao {
+public class UserDaoImpl implements UserDao {
 
     @PersistenceContext(unitName = "emf")
     private EntityManager manager;

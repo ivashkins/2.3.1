@@ -1,21 +1,22 @@
-package ivashproject.Controller;
+package ivashproject.controller;
 
-import ivashproject.Dao.UserDao;
-import ivashproject.Model.User;
+import ivashproject.dao.UserDao;
+import ivashproject.dao.UserDaoImpl;
+import ivashproject.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Controller
 @RequestMapping("/user")
 public class UserController {
 
-    @Autowired
-    UserDao userDao;
+    final UserDao userDao;
+
+    public UserController(UserDao userDao) {
+        this.userDao = userDao;
+    }
 
     @GetMapping()
     public String getUsers(ModelMap map) {
@@ -24,7 +25,7 @@ public class UserController {
     }
     @GetMapping("/{id}")
     public String showUser(@PathVariable long id, ModelMap map){
-        map.addAttribute("user",userDao.show(id));
+        map.addAttribute("user", userDao.show(id));
         return "singleUser";
     }
 

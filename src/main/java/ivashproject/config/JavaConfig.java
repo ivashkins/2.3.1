@@ -1,4 +1,4 @@
-package ivashproject.Config;
+package ivashproject.config;
 
 import org.springframework.web.filter.HiddenHttpMethodFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;

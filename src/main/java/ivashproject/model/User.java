@@ -1,4 +1,4 @@
-package ivashproject.Model;
+package ivashproject.model;
 
 import javax.persistence.*;
 
